@@ -14,7 +14,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">               
+            <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <img src="https://store.taylorswift.com/cdn/shop/files/8wU8sU2k4gvB0i8MJ4wakKkWpJwpOpAO-3_800x.png?v=1695239977" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
                     GLISS VINYLS
@@ -24,18 +24,20 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">                       
+                    <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Tienda" asp-action="Index"> Vinilos  </a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Tienda" asp-action="Index">Vinilos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Producto" asp-action="Index"> Admin Productos  </a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Producto" asp-action="Index">Admin Productos</a>
                         </li>
                     </ul>
                 </div>
+
+                <a class="nav-link text-dark" asp-area="" asp-controller="Tienda" asp-action="Carrito">Carrito de compras</a>
             </div>
         </nav>
     </header>

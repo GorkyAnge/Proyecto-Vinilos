@@ -21,6 +21,13 @@ namespace EjercicioEnClase2.Controllers
                 BaseAddress = new Uri(_apiBaseUrl)
             };
         }
+        public IActionResult Carrito()
+        {
+            // Puedes implementar la lógica para mostrar el contenido del carrito de compras aquí
+            // Por ejemplo, obtendrías los productos agregados al carrito y los mostrarías en la vista "Carrito.cshtml".
+
+            return View(); // Esto renderizará la vista "Carrito.cshtml"
+        }
 
         // Acción para mostrar una lista de productos
         public async Task<IActionResult> Index()

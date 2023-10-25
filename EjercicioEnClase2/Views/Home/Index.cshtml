@@ -2,22 +2,42 @@
 <html>
 <head>
     <title>Tu página de inicio</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .image {
+            max-width: 50%;
+        }
+
+            .image img {
+                max-width: 100%;
+                height: auto;
+            }
+
+        .title {
+            text-align: center;
+        }
+
+        .button {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <div style="text-align: center;">
-        <h1>GORKY PALACIOS MUTIS</h1>
-        <p>Esta es mi primera página web CRUD</p>
-        <p>Escucha la última canción de Shakira <a href="https://youtu.be/7oTlx5YC2P4?si=FLm7BmU6wRLN8rC3">¡Click aquí!</a></p>
-
-        <p>Este es mi perfil de Linkedin</p>
-        <div class="d-flex justify-content-center align-items-center" style="height: 50vh;">
-            <div class="badge-base LI-profile-badge" data-locale="es_ES" data-size="large" data-theme="light" data-type="HORIZONTAL" data-vanity="gorky-palacios-mutis-8136ab230" data-version="v1">
-                <a class="badge-base__link LI-simple-link" href="https://ec.linkedin.com/in/gorky-palacios-mutis-8136ab230?trk=profile-badge"></a>
+    <div class="container">
+        <div class="image">
+            <img src="https://store.taylorswift.com/cdn/shop/files/8wU8sU2k4gvB0i8MJ4wakKkWpJwpOpAO-1_800x.png?v=1698180383" alt="Gliss Vinyls">
+        </div>
+        <div class="title">
+            <h1>Gliss Vinyls</h1>
+            <div class="button">
+                <a href="/Tienda/Index" class="comprar-button">Comprar ahora</a>
             </div>
         </div>
-
-        <p>OCTUBRE 13 CONCIERTO DE TAYLOR EN EL CINE WUUU :D</p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/KudedLV0tP0?si=KRWDXjVygQ6HPnN6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
 </body>
 </html>

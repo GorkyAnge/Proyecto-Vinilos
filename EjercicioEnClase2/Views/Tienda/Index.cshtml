@@ -1,0 +1,35 @@
+﻿@model List<Producto>
+@{
+    ViewData["Title"] = "Tienda Vinilos";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="card">
+                <img src="@item.ImagenUrl" class="card-img-top" alt="Imagen del producto">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Nombre</h5>
+                    <p class="card-text">Precio: $@item.Precio</p>
+                    <a asp-action="Details" asp-route-Id="@item.Id" class="btn btn-primary">Ver detalles</a>
+                    <button type="button" class="btn btn-warning">Agregar al carrito</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<p>En esta página se muestran los productos.</p>
+
+@section scripts {
+    <script>
+        function agregarAlCarrito(productId) {
+            // Aquí puedes implementar la lógica para agregar el producto al carrito.
+            // Puedes enviar una solicitud al servidor o realizar alguna otra acción según tus necesidades.
+            // Por ejemplo, puedes usar JavaScript y AJAX para interactuar con el servidor y agregar el producto al carrito.
+            // En esta función, productId contiene el ID del producto que se está agregando al carrito.
+        }
+    </script>
+}
+

@@ -19,7 +19,7 @@ namespace APIProductos.Controllers
             _db = db;
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("{correo}/{clave}")]
         public async Task<IActionResult> Get(string correo, string clave)
         {
 

@@ -57,6 +57,23 @@ namespace EjercicioEnClase2.Controllers
             }
 
             return RedirectToAction("Index","Home");
+
+            //List<Claim> claims = new List<Claim>();
+            //{
+            //    new Claim(ClaimTypes.Name, usuario_encontrado.NombreUsuario);
+            //};
+
+            //ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            //AuthenticationProperties properties = new AuthenticationProperties()
+            //{
+            //    AllowRefresh = true
+            //};
+
+            //await HttpContext.SignInAsync(
+            //    CookieAuthenticationDefaults.AuthenticationScheme,
+            //    new ClaimsPrincipal(claimsIdentity),
+            //    properties
+            //    );
         }
 
         public IActionResult Inicio()
@@ -68,19 +85,3 @@ namespace EjercicioEnClase2.Controllers
 
 
 
-//List<Claim> claims = new List<Claim>();
-//{
-//    new Claim(ClaimTypes.Name, usuario_encontrado.NombreUsuario);
-//};
-
-//ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-//AuthenticationProperties properties = new AuthenticationProperties()
-//{
-//    AllowRefresh = true
-//};
-
-//await HttpContext.SignInAsync(
-//    CookieAuthenticationDefaults.AuthenticationScheme,
-//    new ClaimsPrincipal(claimsIdentity),
-//    properties
-//    );

@@ -1,3 +1,4 @@
+using APIProductos.Controllers;
 using APIProductos.Data;
 using Microsoft.EntityFrameworkCore;
 

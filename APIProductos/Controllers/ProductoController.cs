@@ -2,6 +2,10 @@
 using APIProductos.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -25,8 +29,15 @@ namespace APIProductos.Controllers
         [HttpGet]
         public async Task <IActionResult> Get()
         {
-            List<Producto> productos = await _db.Productos.ToListAsync();
-            return Ok(productos);
+            try
+            {
+                List<Producto> productos = await _db.Productos.ToListAsync();
+                return Ok(productos);
+            }catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
         }
 
         // GET api/<ProductoController>/5

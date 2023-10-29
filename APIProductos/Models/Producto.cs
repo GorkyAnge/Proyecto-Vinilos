@@ -14,5 +14,8 @@ namespace APIProductos.Models
         public string Descripcion { get; set; }
         [Required]
         public int Cantidad { get; set; }
+
+        public string ImagenUrl { get; set; }
+
     }
 }

@@ -1,4 +1,6 @@
 ﻿using EjercicioEnClase2.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace EjercicioEnClase2.Util
 {

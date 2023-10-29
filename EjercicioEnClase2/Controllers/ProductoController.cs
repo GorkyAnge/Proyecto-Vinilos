@@ -1,5 +1,5 @@
-﻿//Gorky Palacios Mutis
-using EjercicioEnClase2.Models;
+﻿using EjercicioEnClase2.Models;
+using EjercicioEnClase2.Service;
 using EjercicioEnClase2.Util;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,99 +9,83 @@ namespace EjercicioEnClase2.Controllers
     public class ProductoController : Controller
     {
         // Configuración para realizar solicitudes al API
-        private readonly HttpClient _httpClient;
-        private readonly string _apiBaseUrl = "http://localhost:5240";
+        private readonly IAPIService _apiService;
 
         // Constructor del controlador
-        public ProductoController()
+        public ProductoController(IAPIService apiService)
         {
-            // Inicializa un cliente HTTP con la URL base del API
-            _httpClient = new HttpClient()
-            {
-                BaseAddress = new Uri(_apiBaseUrl)
-            };
+            _apiService= apiService;
         }
 
         // Acción para mostrar una lista de productos
         public async Task<IActionResult> Index()
         {
-            // Realiza una solicitud GET al API para obtener la lista de productos
-            var productos = await _httpClient.GetFromJsonAsync<List<Producto>>("api/Producto");
-
-            // Devuelve una vista que muestra los productos
+            List<Producto> productos = await _apiService.GetProductos();
             return View(productos);
         }
 
-        // Acción para mostrar el formulario de creación de un producto
+        // GET: ProductoController/Details/5
+        public async Task<IActionResult> Details(int IdProducto)
+        {
+            Producto producto = await _apiService.GetProducto(IdProducto);
+            if (producto != null)
+            {
+                return View(producto);
+            }
+            return RedirectToAction("Index");
+        }
+
+        // GET: ProductoController/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // Acción para procesar la creación de un producto
         [HttpPost]
         public async Task<IActionResult> Create(Producto producto)
         {
-            // Realiza una solicitud POST al API para crear un nuevo producto
-            await _httpClient.PostAsJsonAsync("api/Producto", producto);
-
-            // Redirige al usuario a la lista de productos (acción "Index")
+            Producto producto1 = await _apiService.PostProducto(producto);
             return RedirectToAction("Index");
         }
 
-        // Acción para mostrar los detalles de un producto
-        public async Task<IActionResult> Details(int id)
+
+
+        // GET: ProductoController/Edit/5
+        public async Task<IActionResult> Edit(int IdProducto)
         {
-            // Realiza una solicitud GET al API para obtener
-            //los detalles de un producto específico
-
-            var producto = await _httpClient.GetFromJsonAsync<Producto>($"api/Producto/{id}");
-
-            // Si se encuentra el producto, muestra una vista con los detalles
-            //de lo contrario, redirige al usuario a la lista de productos
-
-            if (producto != null) return View(producto);
+            Producto producto = await _apiService.GetProducto(IdProducto);
+            if (producto != null)
+            {
+                return View(producto);
+            }
             return RedirectToAction("Index");
         }
 
-        // Acción para mostrar el formulario de edición de un producto
-        public async Task<IActionResult> Edit(int id)
-        {
-            // Realiza una solicitud GET al API para obtener
-            //un producto específico que se desea editar
-
-            var producto = await _httpClient.GetFromJsonAsync<Producto>($"api/Producto/{id}");
-
-            // Si se encuentra el producto, muestra una vista con 
-            //el formulario de edición
-            ///de lo contrario, redirige al usuario a la lista de productos
-
-            if (producto != null) return View(producto);
-            return RedirectToAction("Index");
-        }
-
-        // Acción para procesar la edición de un producto
         [HttpPost]
         public async Task<IActionResult> Edit(Producto producto)
         {
-            // Realiza una solicitud PUT al API para actualizar
-            //un producto con los datos proporcionados
+            Producto producto2 = await _apiService.GetProducto(producto.Id);
+            if (producto2 != null)
+            {
+                Producto producto3 = await _apiService.PutProducto(producto.Id, producto);
 
-            await _httpClient.PutAsJsonAsync($"api/Producto/{producto.Id}", producto);
-
-            // Redirige al usuario a la lista de productos (acción "Index")
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            return View();
         }
 
-        // Acción para eliminar un producto
-        public async Task<IActionResult> Delete(int id)
+
+        // GET: ProductoController/Delete/5
+        public async Task<IActionResult> Delete(int IdProducto)
         {
-            // Realiza una solicitud DELETE al API para eliminar un producto específico
-            await _httpClient.DeleteAsync($"api/Producto/{id}");
-
-            // Redirige al usuario a la lista de productos (acción "Index")
+            Boolean producto2 = await _apiService.DeleteProducto(IdProducto);
+            if (producto2 != false)
+            {
+                return RedirectToAction("Index");
+            }
             return RedirectToAction("Index");
         }
+
     }
 }
 

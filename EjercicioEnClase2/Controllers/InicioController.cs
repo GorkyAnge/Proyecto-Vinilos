@@ -51,13 +51,6 @@ namespace EjercicioEnClase2.Controllers
                 ViewData["Mensaje"] = "No se encontraron coincidencias";
                 return View();
             }
-            else if (usuario_encontrado.EsAdmin)
-            {
-                return RedirectToAction("Index", "VistaAdministrador");
-            }
-
-            return RedirectToAction("Index","Home");
-
             //List<Claim> claims = new List<Claim>();
             //{
             //    new Claim(ClaimTypes.Name, usuario_encontrado.NombreUsuario);
@@ -68,12 +61,20 @@ namespace EjercicioEnClase2.Controllers
             //{
             //    AllowRefresh = true
             //};
-
             //await HttpContext.SignInAsync(
             //    CookieAuthenticationDefaults.AuthenticationScheme,
             //    new ClaimsPrincipal(claimsIdentity),
             //    properties
             //    );
+            
+            if (usuario_encontrado.EsAdmin)
+            {
+                return RedirectToAction("Index", "VistaAdministrador");
+            }
+
+            return RedirectToAction("Index","Home");
+
+            
         }
 
         public IActionResult Inicio()

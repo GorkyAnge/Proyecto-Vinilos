@@ -26,7 +26,7 @@ namespace EjercicioEnClase2.Service
                 Usuario usuario = JsonConvert.DeserializeObject<Usuario>(json_response);
                 return usuario;
             }
-            return new Usuario();
+            return null;
         }
 
         public async Task<Usuario> SaveUsuario(Usuario usuario)

@@ -10,7 +10,9 @@ namespace EjercicioEnClase2.Service
         public Task<Producto> PostProducto(Producto producto);
 
         public Task<Producto> PutProducto(int IdProducto,Producto producto);   
-        public Task<Boolean> DeleteProducto(int IdProducto);   
+        public Task<Boolean> DeleteProducto(int IdProducto);
+        public Task<List<Producto>> BuscarProductosPorNombre(string nombre);
+
 
     }
 }

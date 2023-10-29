@@ -30,13 +30,25 @@ namespace EjercicioEnClase2.Controllers
         }
 
         // Acción para mostrar una lista de productos
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string buscar)
         {
-            // Realiza una solicitud GET al API para obtener la lista de productos
-            List<Producto> productos = await _apiService.GetProductos();
-            // Devuelve una vista que muestra los productos
+            List<Producto> productos;
+
+            if (!string.IsNullOrEmpty(buscar))
+            {
+                // Realiza una búsqueda de productos por nombre y filtra la lista
+                productos = await _apiService.BuscarProductosPorNombre(buscar);
+            }
+            else
+            {
+                // Si no se proporciona un término de búsqueda, obtén todos los productos
+                productos = await _apiService.GetProductos();
+            }
+
             return View(productos);
         }
+
+
 
         // Acción para mostrar los detalles de un producto
         public async Task<IActionResult> Details(int id)

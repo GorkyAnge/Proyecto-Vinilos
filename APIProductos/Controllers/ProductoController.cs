@@ -27,18 +27,27 @@ namespace APIProductos.Controllers
 
         // GET: api/<ProductoController>
         [HttpGet]
-        public async Task <IActionResult> Get()
+        public async Task<IActionResult> Get(string nombre=null)
         {
             try
             {
-                List<Producto> productos = await _db.Productos.ToListAsync();
-                return Ok(productos);
-            }catch (Exception ex)
+                if (!string.IsNullOrEmpty(nombre))
+                {
+                    List<Producto> productos = await _db.Productos.Where(p => p.Nombre.Contains(nombre)).ToListAsync();
+                    return Ok(productos);
+                }
+                else
+                {
+                    List<Producto> productos = await _db.Productos.ToListAsync();
+                    return Ok(productos);
+                }
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-            
         }
+
 
         // GET api/<ProductoController>/5
         [HttpGet("{Id}")]

@@ -81,5 +81,18 @@ namespace EjercicioEnClase2.Service
             }
             return new Producto();
         }
+
+        public async Task<List<Producto>> BuscarProductosPorNombre(string nombre)
+        {
+            var response = await _httpClient.GetAsync($"/api/Producto?nombre={nombre}");
+            if (response.IsSuccessStatusCode)
+            {
+                var json_response = await response.Content.ReadAsStringAsync();
+                List<Producto> productos = JsonConvert.DeserializeObject<List<Producto>>(json_response);
+                return productos;
+            }
+            return new List<Producto>();
+        }
+
     }
 }

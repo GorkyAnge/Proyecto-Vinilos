@@ -72,7 +72,7 @@ namespace EjercicioEnClase2.Controllers
                 return RedirectToAction("Index", "VistaAdministrador");
             }
 
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index","VistaUsuario");
 
             
         }

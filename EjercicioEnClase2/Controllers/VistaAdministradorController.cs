@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EjercicioEnClase2.Controllers
 {
-    public class ProductoController : Controller
+    public class VistaAdministradorController : Controller
     {
         // Configuración para realizar solicitudes al API
         private readonly IAPIService _apiService;
 
         // Constructor del controlador
-        public ProductoController(IAPIService apiService)
+        public VistaAdministradorController(IAPIService apiService)
         {
             _apiService= apiService;
         }
@@ -20,14 +20,16 @@ namespace EjercicioEnClase2.Controllers
         // Acción para mostrar una lista de productos
         public async Task<IActionResult> Index()
         {
+
             List<Producto> productos = await _apiService.GetProductos();
             return View(productos);
         }
 
         // GET: ProductoController/Details/5
-        public async Task<IActionResult> Details(int IdProducto)
+        public async Task<IActionResult> Details(int Id)
         {
-            Producto producto = await _apiService.GetProducto(IdProducto);
+            Producto producto = await _apiService.GetProducto(Id);
+
             if (producto != null)
             {
                 return View(producto);
@@ -51,9 +53,9 @@ namespace EjercicioEnClase2.Controllers
 
 
         // GET: ProductoController/Edit/5
-        public async Task<IActionResult> Edit(int IdProducto)
+        public async Task<IActionResult> Edit(int Id)
         {
-            Producto producto = await _apiService.GetProducto(IdProducto);
+            Producto producto = await _apiService.GetProducto(Id);
             if (producto != null)
             {
                 return View(producto);
@@ -76,9 +78,9 @@ namespace EjercicioEnClase2.Controllers
 
 
         // GET: ProductoController/Delete/5
-        public async Task<IActionResult> Delete(int IdProducto)
+        public async Task<IActionResult> Delete(int Id)
         {
-            Boolean producto2 = await _apiService.DeleteProducto(IdProducto);
+            Boolean producto2 = await _apiService.DeleteProducto(Id);
             if (producto2 != false)
             {
                 return RedirectToAction("Index");

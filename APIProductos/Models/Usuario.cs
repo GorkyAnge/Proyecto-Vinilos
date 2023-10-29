@@ -16,6 +16,7 @@ namespace APIProductos.Models
         public string Correo { get; set; }
         [Required]
         public string Contrasena { get; set; }
-        
+        public Boolean EsAdmin { get; set; }
+
     }
 }

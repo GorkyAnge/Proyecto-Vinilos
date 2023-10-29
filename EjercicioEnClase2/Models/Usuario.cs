@@ -11,6 +11,7 @@ namespace EjercicioEnClase2.Models
         public string NombreUsuario { get; set; }
         public string Correo { get; set; }
         public string Contrasena { get; set; }
+        public Boolean EsAdmin { get; set; }
 
     }
 }

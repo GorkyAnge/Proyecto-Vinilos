@@ -31,19 +31,20 @@ namespace APIProductos.Data
 
                 );;
 
-            //modelBuilder.Entity<Usuario>().HasData(
+            modelBuilder.Entity<Usuario>().HasData(
 
-            //    new Usuario
-            //    {
-            //        IdUsuario = 1,
-            //        NombreUsuario = "Gorky Palacios",
-            //        Correo = "gorkyange@gmail.com",
-            //        Contrasena = "Empanada123",
+                new Usuario
+                {
+                    IdUsuario = 2,
+                    NombreUsuario = "Gorky Palacios",
+                    Correo = "admin@gmail.com",
+                    Contrasena = "empanada123",
+                    EsAdmin = true,
 
-            //    }
+                }
 
 
-            //    ); ;
+                ); ;
         }
 
     }

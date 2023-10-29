@@ -14,9 +14,10 @@ namespace EjercicioEnClase2.Service
             var builder =new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json").Build();
 
-            _baseUrl = builder.GetSection("ApiSettings: BaseUrl").Value;  
+            //_baseUrl = builder.GetSection("ApiSettings:BaseUrl").Value;  
+            _baseUrl = "http://localhost:5240/";  
             _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("http://localhost:5240");
+            _httpClient.BaseAddress = new Uri(_baseUrl);
         }
         public async Task<bool> DeleteProducto(int IdProducto)
         {
@@ -28,9 +29,10 @@ namespace EjercicioEnClase2.Service
             return false;
         }
 
-        public async Task<Producto> GetProducto(int IdProducto)
+        public async Task<Producto> GetProducto(int Id)
         {
-            var response = await _httpClient.GetAsync($"/api/Producto/{IdProducto}");
+            //var response = await _httpClient.GetFromJsonAsync<Producto>($"api/Producto/{Id}");
+            var response = await _httpClient.GetAsync($"/api/Producto/{Id}");
             if (response.IsSuccessStatusCode)
             {
                 var json_response = await response.Content.ReadAsStringAsync();

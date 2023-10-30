@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace APIProductos.Controllers
 {
-    public class CarritoController : Controller
+    public class CompraController : Controller
     {
         // GET: CarritoController
         public ActionResult Index()

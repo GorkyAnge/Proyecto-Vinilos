@@ -2,7 +2,7 @@
 
 namespace APIProductos.Models
 {
-    public class Carrito
+    public class Compra
     {
         [Key]
         public int IdCarrito { get; set; }

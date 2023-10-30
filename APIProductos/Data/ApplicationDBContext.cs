@@ -1,5 +1,6 @@
 ﻿using APIProductos.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 
 namespace APIProductos.Data
 {
@@ -13,6 +14,7 @@ namespace APIProductos.Data
         
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Compra> Compras { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

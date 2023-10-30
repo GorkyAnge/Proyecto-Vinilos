@@ -1,6 +1,6 @@
 ﻿namespace EjercicioEnClase2.Models
 {
-    public class Carrito
+    public class Compra
     {
         public int IdCarrito { get; set; }
         public int IdUsuario { get; set; }

@@ -17,49 +17,49 @@ namespace EjercicioEnClase2.Service
             _httpClient.BaseAddress = new Uri(_baseUrl);
         }
 
-        public async Task<Carrito> GetCarrito(int IdCarrito)
+        public async Task<Compra> GetCarrito(int IdCarrito)
         {
-            var response = await _httpClient.GetAsync($"/api/Carrito/{IdCarrito}");
+            var response = await _httpClient.GetAsync($"/api/Compra/{IdCarrito}");
             if (response.IsSuccessStatusCode)
             {
                 var json_response = await response.Content.ReadAsStringAsync();
-                Carrito carrito = JsonConvert.DeserializeObject<Carrito>(json_response);
+                Compra carrito = JsonConvert.DeserializeObject<Compra>(json_response);
                 return carrito;
             }
-            return new Carrito();
+            return new Compra();
         }
 
         public async Task<bool> AddProducto(int IdCarrito, Producto producto, int Cantidad)
         {
             var item = new { Id = producto.Id, Cantidad = Cantidad };
             var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync($"api/Carrito/{IdCarrito}/items", content);
+            var response = await _httpClient.PostAsync($"api/Compra/{IdCarrito}/items", content);
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<bool> PostCarrito(Carrito carrito)
+        public async Task<bool> PostCarrito(Compra carrito)
         {
             var content = new StringContent(JsonConvert.SerializeObject(carrito), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync($"/api/Carrito", content);
+            var response = await _httpClient.PostAsync($"/api/Compra", content);
             return response.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteCarrito(int IdCarrito)
         {
-            var response = await _httpClient.DeleteAsync($"api/Carrito/{IdCarrito}");
+            var response = await _httpClient.DeleteAsync($"api/Compra/{IdCarrito}");
             return response.IsSuccessStatusCode;
         }
 
         public async Task<bool> RemoveProducto(int IdCarrito, int Id)
         {
-            var response = await _httpClient.DeleteAsync($"api/Carrito/{IdCarrito}/items/{Id}");
+            var response = await _httpClient.DeleteAsync($"api/Compra/{IdCarrito}/items/{Id}");
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<bool> UpdateCarrito(int IdCarrito, Carrito carrito)
+        public async Task<bool> UpdateCarrito(int IdCarrito, Compra carrito)
         {
             var content = new StringContent(JsonConvert.SerializeObject(carrito), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PutAsync($"api/Carrito/{IdCarrito}", content);
+            var response = await _httpClient.PutAsync($"api/Compra/{IdCarrito}", content);
             return response.IsSuccessStatusCode;
         }
 
@@ -67,7 +67,7 @@ namespace EjercicioEnClase2.Service
         {
             var item = new { Id = Id, Cantidad = Cantidad };
             var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PutAsync($"api/Carrito/{IdCarrito}/items/{Id}", content);
+            var response = await _httpClient.PutAsync($"api/Compra/{IdCarrito}/items/{Id}", content);
             return response.IsSuccessStatusCode;
         }
     }

@@ -5,11 +5,11 @@ namespace EjercicioEnClase2.Service
     public interface IAPICompra
     {
         //Obtener el carrito por ID
-        public Task<Carrito> GetCarrito(int IdCarrito);
+        public Task<Compra> GetCarrito(int IdCarrito);
         //Crear un nuevo carrito
-        public Task<bool> PostCarrito(Carrito carrito);
+        public Task<bool> PostCarrito(Compra carrito);
         //Actualizar un carrito existente
-        public Task<bool> UpdateCarrito(int IdCarrito, Carrito carrito);
+        public Task<bool> UpdateCarrito(int IdCarrito, Compra carrito);
         //Eliminar un carrito
         public Task<bool> DeleteCarrito(int IdCarrito);
         //Agregar un producto al carrito

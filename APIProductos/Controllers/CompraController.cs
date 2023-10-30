@@ -30,6 +30,7 @@ namespace APIProductos.Controllers
         {
             try
             {
+
                 return RedirectToAction(nameof(Index));
             }
             catch

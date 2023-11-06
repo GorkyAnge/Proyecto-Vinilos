@@ -7,6 +7,10 @@
 
 <form method="post">
     <div class="mb-3">
+        <label class="form-label">Id del Vinilo:</label>
+        <input asp-for="Id" class="form-control" disabled>
+    </div>
+    <div class="mb-3">
         <label class="form-label">Nombre</label>
         <input asp-for="Nombre" class="form-control" disabled>
     </div>
@@ -19,9 +23,8 @@
         <input asp-for="Cantidad" class="form-control" disabled>
     </div>
     <div class="col-6">
-         <a asp-action="Index" type="submit" class="btn btn-outline-primary">Regresar</a>
+        <a asp-action="Index" type="submit" class="btn btn-outline-primary">Regresar</a>
     </div>
-
 </form>
 
 <p>En esta página se miran los productos.</p>

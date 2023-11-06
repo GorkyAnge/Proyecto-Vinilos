@@ -1,0 +1,31 @@
+﻿@model Resena
+@{
+    ViewData["Title"] = "Agregar Resena";
+    Layout = "_LayoutUsuario";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>En esta página puedes agregar tu reseña sobre el álbum</p>
+
+<form method="post">
+    <div class="mb-3">
+        <label class="form-label">Id del Vinilo:</label>
+        <input asp-for="ViniloId" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Usuario:</label>
+        <input asp-for="Usuario" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Escribe tu comentario:</label>
+        <textarea asp-for="Texto" class="form-control" rows="3"></textarea>
+    </div>
+    <div class="col-6">
+        <button asp-action="CreateResena" type="submit" asp-controller="Resena" class="btn btn-outline-success">Agregar Reseña</button>
+    </div>
+    <div class="col-6">
+        <a asp-action="Index" asp-controller="VistaUsuario" type="submit" class="btn btn-outline-primary">Regresar</a>
+    </div>
+</form>
+
+

@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IAPIService, APIService>();
 builder.Services.AddScoped<IAPIServiceUsuario, APIServiceUsuario>();
+builder.Services.AddScoped<IAPIResena, APIResena>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
@@ -31,6 +32,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=VistaUsuario}/{action=Index}/{id?}");
 
 app.Run();

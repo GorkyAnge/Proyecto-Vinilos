@@ -5,11 +5,48 @@
 namespace APIProductos.Migrations
 {
     /// <inheritdoc />
-    public partial class CarroCompras : Migration
+    public partial class Resenas : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Productos_Compras_CompraIdCarrito",
+                table: "Productos");
+
+            migrationBuilder.DropTable(
+                name: "Compras");
+
+            migrationBuilder.DropIndex(
+                name: "IX_Productos_CompraIdCarrito",
+                table: "Productos");
+
+            migrationBuilder.DropColumn(
+                name: "CompraIdCarrito",
+                table: "Productos");
+
+            migrationBuilder.CreateTable(
+                name: "Resenas",
+                columns: table => new
+                {
+                    IdResena = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ViniloId = table.Column<int>(type: "int", nullable: false),
+                    Usuario = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Texto = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Resenas", x => x.IdResena);
+                });
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "Resenas");
+
             migrationBuilder.AddColumn<int>(
                 name: "CompraIdCarrito",
                 table: "Productos",
@@ -48,25 +85,6 @@ namespace APIProductos.Migrations
                 column: "CompraIdCarrito",
                 principalTable: "Compras",
                 principalColumn: "IdCarrito");
-        }
-
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Productos_Compras_CompraIdCarrito",
-                table: "Productos");
-
-            migrationBuilder.DropTable(
-                name: "Compras");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Productos_CompraIdCarrito",
-                table: "Productos");
-
-            migrationBuilder.DropColumn(
-                name: "CompraIdCarrito",
-                table: "Productos");
         }
     }
 }

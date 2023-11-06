@@ -27,8 +27,9 @@
                 <div class="card-body">
                     <h5 class="card-title">@item.Nombre</h5>
                     <p class="card-text">Precio: $@item.Precio</p>
-                    <a asp-action="Details" asp-route-Id="@item.Id" class="btn btn-primary">Ver detalles</a>
-                    <button type="button" class="btn btn-warning">Agregar al carrito</button>
+                    <a asp-action="Details" asp-controller="VistaUsuario" asp-route-Id="@item.Id" class="btn btn-primary">Ver detalles</a>
+                    <a asp-action="Create" asp-controller="Resena" class="btn btn-success">Agregar Reseña</a>
+                    <a asp-action="DetailsReview" asp-route-Id="@item.Id" asp-controller="Resena" class="btn btn-info">Ver comentarios</a>
                 </div>
             </div>
         </div>

@@ -1,0 +1,14 @@
+﻿@model Resena
+@{
+    ViewData["Title"] = "Visualizar Comentarios";
+    Layout = "_LayoutUsuario";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="mb-3">
+    <label class="form-label">Comentario:</label>
+    <input asp-for="Texto" class="form-control" disabled>
+</div>
+<div class="col-6">
+    <a asp-action="DetailsReview" asp-controller="Resena" type="submit" class="btn btn-outline-primary">Regresar</a>
+</div>
